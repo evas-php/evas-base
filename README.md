@@ -1,2 +1,2 @@
 # evas-base
-Evas-php base module (App class, RunDir, PhpCustomize and more helpers)
+Evas-php base module (App class, RunDirHelper, PhpHelper and more helpers)
