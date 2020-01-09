@@ -1,0 +1,15 @@
+{
+    "name": "evas-php/evas-base",
+    "description": "Evas base module (Evas-php base module (App class, RunDirHelper, PhpHelper and more helpers)",
+    "version": "1.0",
+    "minimum-stability": "dev",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "evasyakin",
+            "email": "e.vasyakin@itevas.ru"
+        }
+    ],
+    "require": {}
+}
