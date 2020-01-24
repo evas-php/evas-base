@@ -1,7 +1,7 @@
 <?php
 namespace Evas\Base\Exception;
 
-use Evas\Base\Exception as BaseException;
+use Evas\Base\BaseException;
 
 /**
  * Исключение не найдено свойство.
@@ -9,5 +9,4 @@ use Evas\Base\Exception as BaseException;
  * @since 1.0
  */
 class UndefinedPropertyException extends BaseException
-{
-}
+{}
