@@ -4,13 +4,12 @@
  */
 namespace Evas\Base;
 
-use \Exception as PhpException;
+use \Exception;
 
 /**
  * Базовый класс исключения.
  * @author Egor Vasyakin <e.vasyakin@itevas.ru>
  * @since 1.0
  */
-class Exception extends PhpException
-{
-}
+class BaseException extends Exception
+{}
