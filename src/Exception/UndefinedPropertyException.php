@@ -5,7 +5,7 @@ use Evas\Base\BaseException;
 
 /**
  * Исключение не найдено свойство.
- * @author Egor Vasyakin <e.vasyakin@itevas.ru>
+ * @author Egor Vasyakin <egor@evas-php.com>
  * @since 1.0
  */
 class UndefinedPropertyException extends BaseException

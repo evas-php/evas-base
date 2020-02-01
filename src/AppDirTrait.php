@@ -8,7 +8,7 @@ use Evas\Base\RunDirHelper;
 
 /**
  * Трейт поддежки методов директории приложения.
- * @author Egor Vasyakin <e.vasyakin@itevas.ru>
+ * @author Egor Vasyakin <egor@evas-php.com>
  * @since 1.0
  */
 trait AppDirTrait

@@ -8,7 +8,7 @@ use Evas\Base\Exception\FileNotFoundException;
 
 /**
  * Трейт расширения приложения подгрузкой файлов.
- * @author Egor Vasyakin <e.vasyakin@itevas.ru>
+ * @author Egor Vasyakin <egor@evas-php.com>
  * @since 1.0
  */
 trait AppLoadTrait

@@ -10,7 +10,7 @@ use Evas\Base\Exception\UndefinedPropertyException;
  * Трейт поддежки Singleton-экземпляра.
  * Нужен для поддержки связного вызова методов вида: MyClass::setMethod()->setMethod()->method()
  * 
- * @author Egor Vasyakin <e.vasyakin@itevas.ru>
+ * @author Egor Vasyakin <egor@evas-php.com>
  * @since 1.0
  */
 trait SingletonInstanceTrait
