@@ -21,7 +21,7 @@ trait MessageVarsReplacerTrait
      */
     public function setMessageVars(string $message, array $vars = null): string
     {
-        if (null === $vars) return $vars = @get_object_vars($this) ?? null;
+        if (null === $vars) $vars = @get_object_vars($this) ?? null;
         if (null === $vars) return $message;
         $message = preg_replace_callback(
             '/<(?<before>[^<]*):(?<key>[a-zA-Z]*)(?<after>[^<]*)>|:(?<key2>[a-zA-Z]*)/', 
