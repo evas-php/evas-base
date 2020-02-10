@@ -25,13 +25,13 @@ trait MessageVarsReplacerTrait
         if (null === $vars) return $message;
         $message = preg_replace_callback(
             '/<(?<before>[^<]*):(?<key>[a-zA-Z]*)(?<after>[^<]*)>|:(?<key2>[a-zA-Z]*)/', 
-            function ($matches) {
+            function ($matches) use ($vars) {
                 extract($matches);
                 if (empty($key)) $key = $key2;
                 $value = $vars[$key] ?? null;
                 if (empty($value)) {
-                    if (empty(static::$message_aliases_keys)) return '';
-                    $alias = static::$message_aliases_keys[$key] ?? null;
+                    if (empty(static::$message_keys_aliases)) return '';
+                    $alias = static::$message_keys_aliases[$key] ?? null;
                     if (empty($alias)) return '';
                     $value = $vars[$alias] ?? null;
                     if (empty($value)) return '';
