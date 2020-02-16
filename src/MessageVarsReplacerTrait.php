@@ -41,4 +41,15 @@ trait MessageVarsReplacerTrait
             $message);
         return $message;
     }
+
+    /**
+     * Подстановка значения переменных в сообщение для статического вызова.
+     * @param string сообщение
+     * @param array|null значения для подстановки
+     * @return string ообщение с вставленными переменными
+     */
+    public static function setMessageVarsStatic(string $message, array $vars = null): string
+    {
+        return (new static)->setMessageVars($message, $vars);
+    }
 }
