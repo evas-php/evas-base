@@ -48,4 +48,15 @@ trait AppDirTrait
     {
         return RunDirHelper::getDir();
     }
+
+    /**
+     * Получение/установка базовой директории приложения.
+     * @param string|null директория
+     * @return string директория
+     */
+    public static function dir(string $dir = null)
+    {
+        if ($dir) static::setDir($dir);
+        return static::getDir();
+    }
 }
