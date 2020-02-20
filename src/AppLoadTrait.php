@@ -4,6 +4,7 @@
  */
 namespace Evas\Base;
 
+use Evas\Base\App;
 use Evas\Base\Exception\FileNotFoundException;
 
 /**
@@ -20,7 +21,7 @@ trait AppLoadTrait
      */
     public static function filename(string $filename): string
     {
-        return static::getDir() . $filename;
+        return App::dir() . $filename;
     }
 
     /**
@@ -32,9 +33,7 @@ trait AppLoadTrait
      */
     public static function load(string $filename, array $args = [])
     {
-        if (!static::canLoad($filename)) {
-            throw new FileNotFoundException("File \"$filename\" not found");
-        }
+        static::throwIfNotCanLoad($filename);
         extract($args);
         return include $filename;
     }
@@ -47,6 +46,17 @@ trait AppLoadTrait
     public static function canLoad(string $filename): bool
     {
         return is_readable($filename) && is_file($filename) ? true : false;
+    }
+
+    /**
+     * Выбросить исключение, если не удается загрузить файл.
+     * @throws FileNotFoundException
+     */
+    public static function throwIfNotCanLoad(string $filename)
+    {
+        if (!static::canLoad($filename)) {
+            throw new FileNotFoundException("File \"$filename\" not found");
+        }
     }
 
     /**
