@@ -28,14 +28,19 @@ trait AppLoadTrait
      * Подгрузить содержимое файла относительно корня приложения или по абсолютному пути.
      * @param string имя файла
      * @param array аргументы для загружаемого файла
+     * @param object|null контекст
      * @throws FileNotFoundException
      * @return mixed|null возвращаемый результат файла
      */
-    public static function load(string $filename, array $args = [])
+    public static function load(string $filename, array $args = [], object &$context = null)
     {
         static::throwIfNotCanLoad($filename);
-        extract($args);
-        return include $filename;
+        $load = function () use ($filename, $args) {
+            extract($args);
+            return include $filename;
+        };
+        if ($context) $load = $load->bindTo($context);
+        return $load();
     }
 
     /**
