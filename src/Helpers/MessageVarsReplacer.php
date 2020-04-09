@@ -2,7 +2,7 @@
 /**
  * @package evas-php/evas-base
  */
-namespace Evas\Base;
+namespace Evas\Base\Helpers;
 
 use Evas\Base\MessageReplacerTrait;
 

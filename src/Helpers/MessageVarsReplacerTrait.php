@@ -2,7 +2,7 @@
 /**
  * @package evas-php/evas-base
  */
-namespace Evas\Base;
+namespace Evas\Base\Helpers;
 
 /**
  * Трейт-хелпер для подстановок значений переменных в сообщения.
@@ -22,6 +22,17 @@ trait MessageVarsReplacerTrait
     public function setMessageVars(string $message, array $vars = null): string
     {
         if (null === $vars) $vars = @get_object_vars($this) ?? null;
+        return static::setMessageVarsStatic($message, $vars);
+    }
+
+    /**
+     * Подстановка значения переменных в сообщение для статического вызова.
+     * @param string сообщение
+     * @param array|null значения для подстановки
+     * @return string ообщение с вставленными переменными
+     */
+    public static function setMessageVarsStatic(string $message, array $vars = null): string
+    {
         if (null === $vars) return $message;
         $message = preg_replace_callback(
             '/<(?<before>[^<]*):(?<key>[a-zA-Z]*)(?<after>[^<]*)>|:(?<key2>[a-zA-Z]*)/', 
@@ -40,16 +51,5 @@ trait MessageVarsReplacerTrait
             }, 
             $message);
         return $message;
-    }
-
-    /**
-     * Подстановка значения переменных в сообщение для статического вызова.
-     * @param string сообщение
-     * @param array|null значения для подстановки
-     * @return string ообщение с вставленными переменными
-     */
-    public static function setMessageVarsStatic(string $message, array $vars = null): string
-    {
-        return (new static)->setMessageVars($message, $vars);
     }
 }
