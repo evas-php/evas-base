@@ -4,7 +4,7 @@
  */
 namespace Evas\Base;
 
-use Evas\Base\RunDirHelper;
+use Evas\Base\Helpers\RunDirHelper;
 
 /**
  * Трейт поддежки методов директории приложения.
