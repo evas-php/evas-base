@@ -6,7 +6,7 @@ namespace Evas\Base;
 
 use Evas\Base\AppDirTrait;
 use Evas\Base\AppLoadTrait;
-use Evas\Base\SingletonInstanceTrait;
+use Evas\Di\AppDiTrait;
 
 /**
  * Базовый класс приложения.
@@ -16,17 +16,25 @@ use Evas\Base\SingletonInstanceTrait;
 class App
 {
     /**
-     * Подключаем поддержку singleton-экземпляра приложения.
-     */
-    use SingletonInstanceTrait;
-
-    /**
+     * Подключаем поддержку di-контейнера приложения.
      * Подключаем поддержку директории приложения.
+     * Подключаем поддержку подгрузки файла.
      */
+    use AppDiTrait;
     use AppDirTrait;
+    use AppLoadTrait;
 
     /**
-     * Подключаем поддержку подгрузки содержимого файлов.
+     * Получение единственного экземпляра приложения.
+     * для последовательного вызова методов приложения
+     * @return self
      */
-    use AppLoadTrait;
+    public static function instance(): object
+    {
+        static $instance = null;
+        if (null === $instance) {
+            $instance = new static;
+        }
+        return $instance;
+    }
 }
