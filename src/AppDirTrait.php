@@ -14,18 +14,13 @@ use Evas\Base\Helpers\RunDirHelper;
 trait AppDirTrait
 {
     /**
-     * @var string директория приложения
-     */
-    protected $dir;
-
-    /**
      * Установка базовой директории приложения.
      * @param string
      * @return self
      */
     public static function setDir(string $dir)
     {
-        return static::instanceSet('dir', RunDirHelper::addEndDirSlash($dir));
+        return static::set('dir', RunDirHelper::addEndDirSlash($dir));
     }
 
     /**
@@ -34,10 +29,10 @@ trait AppDirTrait
      */
     public static function getDir(): string
     {
-        if (!static::instanceHas('dir')) {
+        if (!static::has('dir')) {
             static::setDir(static::getRunDir());
         }
-        return static::instanceGet('dir');
+        return static::get('dir');
     }
 
     /**

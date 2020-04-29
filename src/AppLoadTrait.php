@@ -4,7 +4,6 @@
  */
 namespace Evas\Base;
 
-use Evas\Base\App;
 use Evas\Base\Exception\FileNotFoundException;
 
 /**
@@ -21,7 +20,7 @@ trait AppLoadTrait
      */
     public static function filename(string $filename): string
     {
-        return App::dir() . $filename;
+        return static::dir() . $filename;
     }
 
     /**
