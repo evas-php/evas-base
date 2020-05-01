@@ -1,6 +1,7 @@
 {
     "name": "evas-php/evas-base",
     "description": "Evas-php base module (App class, RunDirHelper, PhpHelper and more helpers)",
+    "keywords": ["framework", "evas-php"],
     "version": "1.0",
     "type": "library",
     "license": "CC-BY-4.0",
@@ -9,9 +10,6 @@
             "name": "Egor Vasyakin",
             "email": "egor@evas-php.com"
         }
-    ],
-    "repositories": [
-        {"type": "vcs", "url": "https://github.com/evas-php/evas-di"}
     ],
     "require": {
         "evas-php/evas-di": "*"
