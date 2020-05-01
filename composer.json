@@ -15,6 +15,6 @@
         {"type": "vcs", "url": "https://github.com/evas-php/evas-di"}
     ],
     "require": {
-        "evas-php/evas-di": "dev-master"
+        "evas-php/evas-di": "*"
     }
 }
