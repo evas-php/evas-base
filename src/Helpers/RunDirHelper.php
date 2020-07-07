@@ -12,13 +12,13 @@ namespace Evas\Base\Helpers;
 class RunDirHelper
 {
     /**
-     * Вспомогательный метод для удаления слеша в конце директории.
+     * Вспомогательный метод для приведения директории к нормальному виду.
      * @param string путь
      * @return string
      */
-    public static function addEndDirSlash(string $dir): string
+    public static function prepareDir(string $dir): string
     {
-        return str_replace('\\', '/', realpath($dir)) . '/';
+        return realpath(str_replace('\\', '/', $dir)) . '/';
     }
 
     /**
@@ -29,7 +29,7 @@ class RunDirHelper
     {
         static $dir = null;
         if (null === $dir) {
-            $dir = static::addEndDirSlash(dirname($_SERVER['SCRIPT_FILENAME']) . '/');
+            $dir = static::prepareDir(dirname($_SERVER['SCRIPT_FILENAME']));
         }
         return $dir;
     }

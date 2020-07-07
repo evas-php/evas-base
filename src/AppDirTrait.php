@@ -20,7 +20,7 @@ trait AppDirTrait
      */
     public static function setDir(string $dir)
     {
-        return static::set('dir', RunDirHelper::addEndDirSlash($dir));
+        return static::set('dir', RunDirHelper::prepareDir($dir));
     }
 
     /**
