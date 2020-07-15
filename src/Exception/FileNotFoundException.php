@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package evas-php\evas-base
+ */
 namespace Evas\Base\Exception;
 
 use Evas\Base\BaseException;

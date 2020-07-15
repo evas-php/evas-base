@@ -1,6 +1,6 @@
 <?php
 /**
- * @package evas-php/evas-base
+ * @package evas-php\evas-base
  */
 namespace Evas\Base;
 
