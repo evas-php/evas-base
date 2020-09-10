@@ -21,11 +21,11 @@ trait LoadTrait
      * @throws FileNotFoundException
      * @return mixed|null возвращаемый результат файла
      */
-    public static function load(string $filename, array $args = [], object &$context = null)
+    public static function load(string $filename, array $args = null, object &$context = null)
     {
         static::throwIfNotCanLoad($filename);
         $load = function () use ($filename, $args) {
-            extract($args);
+            if (!empty($args)) extract($args);
             return include $filename;
         };
         if ($context) $load = $load->bindTo($context);

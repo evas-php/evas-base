@@ -35,7 +35,7 @@ trait AppLoadTrait
      * @param array аргументы для загружаемого файла
      * @return mixed|null возвращаемый результат файла
      */
-    public static function loadByApp(string $filename, array $args = [])
+    public static function loadByApp(string $filename, array $args = null)
     {
         $filename = static::filename($filename);
         return static::load($filename, $args);
