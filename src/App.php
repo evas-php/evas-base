@@ -31,9 +31,9 @@ class App
 
     /**
      * Установка инстанса приложения.
-     * @param self инстанс приложения
+     * @param App инстанс приложения
      */
-    public static function setInstance(App $instance)
+    public static function setInstance(App &$instance)
     {
         static::$instance = &$instance;
     }
