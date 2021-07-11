@@ -23,15 +23,15 @@ class IncludeTraitTest extends \Codeception\Test\Unit
 
     public function testCanInclude()
     {
-        $filenameNoExists = __DIR__ .'/data/no-exists.txt';
+        $filenameNoExists = __DIR__ .'/_data/no-exists.txt';
         $this->assertFalse($this->incHelp->canInclude($filenameNoExists));
-        $filenameExists = __DIR__ .'/data/includedFile.php';
+        $filenameExists = __DIR__ .'/_data/includedFile.php';
         $this->assertTrue($this->incHelp->canInclude($filenameExists));
     }
 
     public function testInclude()
     {
-        $filenameExists = __DIR__ .'/data/includedFile.php';
+        $filenameExists = __DIR__ .'/_data/includedFile.php';
         $this->assertEquals(
             include $filenameExists, $this->incHelp->include($filenameExists)
         );
@@ -39,7 +39,7 @@ class IncludeTraitTest extends \Codeception\Test\Unit
 
     public function testIncludeException()
     {
-        $filenameNoExists = PhpHelp::path(__DIR__ .'/data/no-exists.txt');
+        $filenameNoExists = PhpHelp::path(__DIR__ .'/_data/no-exists.txt');
         $this->expectException(FileNotFoundException::class);
         $this->expectExceptionMessage("File \"$filenameNoExists\" not found");
         $this->incHelp->include($filenameNoExists);
