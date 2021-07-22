@@ -1,6 +1,6 @@
 <?php
 /**
- * Трейт загрузки файлов.
+ * Трейт подключения файлов.
  * @package evas-php\evas-base
  * @author Egor Vasyakin <egor@evas-php.com>
  */

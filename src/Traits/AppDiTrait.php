@@ -1,4 +1,9 @@
 <?php
+/**
+ * Трейт Di-контейнера приложения.
+ * @package evas-php/evas-base
+ * @author Egor Vasyakin <egor@evas-php.com>
+ */
 namespace Evas\Base\Traits;
 
 use Evas\Di\Container;

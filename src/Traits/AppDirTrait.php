@@ -1,6 +1,6 @@
 <?php
 /**
- * Трейт поддержки базовой директории для приложения.
+ * Трейт директории приложения.
  * @package evas-php\evas-base
  * @author Egor Vasyakin <egor@evas-php.com>
  */

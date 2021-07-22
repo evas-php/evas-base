@@ -1,4 +1,9 @@
 <?php
+/**
+ * Тест Di-контейнера приложения.
+ * @package evas-php/evas-base
+ * @author Egor Vasyakin <egor@evas-php.com>
+ */
 use Evas\Base\tests;
 
 use Codeception\Util\Autoload;
