@@ -65,7 +65,7 @@ class PhpHelp
      * @param array массив
      * @return string
      */
-    public static function getArrayType(array &$arr): string
+    public static function getArrayType(array $arr): string
     {
         return (static::isAssoc($arr) ? 'assoc' : 'numeric') . ' array';
     }
@@ -76,7 +76,7 @@ class PhpHelp
      * @param bool поддерживать ли типы массива
      * @return string тип
      */
-    public static function getType(&$var, bool $arrayTypesAvailable = false): string
+    public static function getType($var, bool $arrayTypesAvailable = false): string
     {
         return is_object($var) ? get_class($var) : (
             is_array($var) && $arrayTypesAvailable 
