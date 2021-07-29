@@ -1,6 +1,6 @@
 <?php
 /**
- * Класс хелпера для php.
+ * Хелпер для php.
  * @package evas-php\evas-base
  * @author Egor Vasyakin <egor@evas-php.com>
  */
