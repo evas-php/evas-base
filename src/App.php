@@ -8,11 +8,13 @@ namespace Evas\Base;
 
 use Evas\Base\Traits\AppDiTrait;
 use Evas\Base\Traits\AppDirTrait;
+use Evas\Base\Traits\IncludeTrait;
 
 class App
 {
     use AppDirTrait;
     use AppDiTrait;
+    use IncludeTrait;
 
     /** @var static инстанс приложения */
     public static $instance;
