@@ -1,6 +1,6 @@
 <?php
 /**
- * Трейт подключения файлов.
+ * Трейт для подключения файлов.
  * @package evas-php\evas-base
  * @author Egor Vasyakin <egor@evas-php.com>
  */
@@ -19,10 +19,10 @@ trait IncludeTrait
      * @return mixed|null возвращаемый результат файла
      * @throws FileNotFoundException
      */
-    public function include(string $filename, array $args = null, object &$context = null)
+    public static function include(string $filename, array $args = null, object &$context = null)
     {
         $filename = App::resolveByApp($filename);
-        $this->throwIfNotCanInclude($filename);
+        static::throwIfNotCanInclude($filename);
         $load = function () use ($filename, $args) {
             if (!empty($args)) extract($args);
             return include $filename;
@@ -49,7 +49,7 @@ trait IncludeTrait
      */
     public function throwIfNotCanInclude(string $filename)
     {
-        if (!$this->canInclude($filename)) {
+        if (!static::canInclude($filename)) {
             throw new FileNotFoundException($filename);
         }
     }
