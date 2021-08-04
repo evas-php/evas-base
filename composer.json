@@ -2,7 +2,7 @@
     "name": "evas-php/evas-base",
     "description": "Evas-php base module (App class, RunDirHelper, PhpHelper and more helpers)",
     "keywords": ["framework", "evas-php"],
-    "version": "1.0",
+    "version": "1.1",
     "type": "library",
     "license": "CC-BY-4.0",
     "authors": [
