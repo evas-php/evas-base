@@ -36,7 +36,7 @@ trait IncludeTrait
      * @param string путь файла
      * @return bool найден ли файл
      */
-    public function canInclude(string $filename): bool
+    public static function canInclude(string $filename): bool
     {
         $filename = App::resolveByApp($filename);
         return is_readable($filename) && is_file($filename);
@@ -47,7 +47,7 @@ trait IncludeTrait
      * @param string путь файла
      * @throws FileNotFoundException
      */
-    public function throwIfNotCanInclude(string $filename)
+    public static function throwIfNotCanInclude(string $filename)
     {
         if (!static::canInclude($filename)) {
             throw new FileNotFoundException($filename);
