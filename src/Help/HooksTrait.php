@@ -9,7 +9,7 @@ namespace Evas\Base\Help;
 trait HooksTrait
 {
     /**
-     * Вызов метода при наличии. Для хуков событий.
+     * Вызов метода при наличии.
      * @param string имя метода
      * @param mixed аргумент метода
      */
@@ -20,6 +20,21 @@ trait HooksTrait
         }
         if (method_exists($this, $methodName)) {
             call_user_func_array([$this, $methodName], $methodArgs);
+        }
+    }
+
+    /**
+     * Вызов статического метода при наличии.
+     * @param string имя метода
+     * @param mixed аргумент метода
+     */
+    protected static function staticHook(string $methodName, ...$methodArgs)
+    {
+        if (defined('EVAS_DEBUG') && true == EVAS_DEBUG) {
+            echo $methodName . ('cli' == PHP_SAPI ? "\n" : '<br>');
+        }
+        if (method_exists(static::class, $methodName)) {
+            call_user_func_array([static::class, $methodName], $methodArgs);
         }
     }
 }
