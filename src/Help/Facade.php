@@ -6,26 +6,33 @@
  */
 namespace Evas\Base\Help;
 
+use Evas\Base\Help\HooksTrait;
+
 class Facade
 {
-    /** @static static объект обёрнутый в фасад */
-    protected static $latestObject;
+    /**
+     * Подключаем трейт хуков.
+     */
+    use HooksTrait;
+
+    /** @static static объект монтированный в фасад */
+    protected static $mountedObject;
 
     /**
      * Конструктор.
      */
     public function __construct()
     {
-        static::switch($this);
+        static::mount($this);
     }
 
     /**
-     * Переключение содержимого фасада.
+     * Монтирование содержимого фасада.
      * @param static объект
      */
-    public static function switch(Facade &$object)
+    public static function mount(Facade &$object)
     {
-        static::$latestObject = &$object;
+        static::$mountedObject = &$object;
     }
 
     /**
@@ -42,7 +49,7 @@ class Facade
                 'Facade entity %s not has method %s', __CLASS__, $name
             ));
         }
-        static::switch($this);
+        static::mount($this);
         return $this->$name(...$args ?? []);
     }
 
@@ -60,9 +67,12 @@ class Facade
                 'Facade entity %s not has method %s', __CLASS__, $name
             ));
         }
-        if (!static::$latestObject) {
+        if (!static::$mountedObject) {
+            static::staticHook('mountDefault');
+        }
+        if (!static::$mountedObject) {
             throw new \BadMethodCallException(sprintf('Facade %s not has entity', __CLASS__));
         }
-        return static::$latestObject->$name(...$args ?? []);
+        return static::$mountedObject->$name(...$args ?? []);
     }
 }
