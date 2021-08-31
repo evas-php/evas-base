@@ -75,6 +75,7 @@ trait AppDirTrait
      */
     public static function resolveByApp(string $path): string
     {
-        return is_readable($path) ? PhpHelp::path($path) : static::absolutePathByApp($path);
+        return is_readable($path) && 'index.php' !== $path ? PhpHelp::path($path) : static::absolutePathByApp($path);
+        // return is_readable($path) ? PhpHelp::path($path) : static::absolutePathByApp($path);
     }
 }
