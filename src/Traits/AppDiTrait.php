@@ -82,6 +82,9 @@ trait AppDiTrait
 
     public static function __callStatic(string $name, array $args = null)
     {
+        if (method_exists(static::instance(), $name)) {
+            return static::instance()->$name(...$args);
+        }
         if (static::has($name)) {
             return static::di()->isCallable($name)
                 ? static::call($name, $args)
