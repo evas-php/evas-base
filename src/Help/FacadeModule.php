@@ -32,8 +32,10 @@ class FacadeModule extends Facade
         }
         if (App::di()->has(static::MODULE_NAME)) {
             $module = App::di()->get(static::MODULE_NAME);
-            static::mount($module);
+        } else {
+            $module = new static;
         }
+        static::mount($module);
     }
 
     /**
