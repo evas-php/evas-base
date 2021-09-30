@@ -21,6 +21,7 @@ class FacadeModule extends Facade
 
     /**
      * Монтирование экзмепляра модуля в фасад из DI.
+     * @throws \InvalidArgumentException
      */
     protected static function mountDefault()
     {
