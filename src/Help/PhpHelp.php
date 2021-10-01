@@ -83,4 +83,22 @@ class PhpHelp
                 ? static::getArrayType($var) : gettype($var)
         );
     }
+
+    /**
+     * Проверка запуска php из командной строки.
+     * @return bool
+     */
+    public static function isCli(): bool
+    {
+        return substr(PHP_SAPI, 0, 3) == 'cli';
+    }
+
+    /**
+     * Получение конца строки для веб или cli.
+     * @return string
+     */
+    public static function eol(): string
+    {
+        return static::isCli() ? "\n" : '<br>';
+    }
 }
