@@ -62,7 +62,7 @@ class Facade
     {
         if (!method_exists(static::class, $name)) {
             throw new \BadMethodCallException(sprintf(
-                'Facade entity %s not has method %s', __CLASS__, $name
+                'Facade entity %s not has static method %s', __CLASS__, $name
             ));
         }
         if (!static::$mountedObject) {

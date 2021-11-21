@@ -27,7 +27,7 @@ class FacadeModule extends Facade
     {
         if (!static::MODULE_NAME) {
             throw new \InvalidArgumentException(sprintf(
-                'Name for module %s must be exists', static::class
+                'Name for module %s must be exists', __CLASS__
             ));
         }
         if (App::di()->has(static::MODULE_NAME)) {
