@@ -49,7 +49,7 @@ class FacadeModule extends Facade
     }
 
     /**
-     * Установка конфига модуля аутентификации.
+     * Установка конфига модуля.
      * @param array|string конфиг или путь к конфигу
      * @return self
      * @throws \InvalidArgumentException
@@ -77,7 +77,7 @@ class FacadeModule extends Facade
     }
 
     /**
-     * Получение конфига модуля аутентификации.
+     * Получение конфига модуля.
      * @return array конфиг
      */
     protected function config(): array

@@ -10,9 +10,7 @@ use Evas\Base\Help\HooksTrait;
 
 class Facade
 {
-    /**
-     * Подключаем трейт хуков.
-     */
+    /** Подключаем трейт хуков. */
     use HooksTrait;
 
     /** @static static объект монтированный в фасад */
