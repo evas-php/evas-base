@@ -71,8 +71,6 @@ class FacadeModule extends Facade
             ));
         }
         $this->config = array_merge_recursive($this->config(), $config);
-        $this->supportedTypes = null;
-        $this->supportedSystems = null;
         return $this;
     }
 
