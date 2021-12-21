@@ -15,10 +15,10 @@ trait HooksTrait
      */
     protected function hook(string $methodName, ...$methodArgs)
     {
-        if (defined('EVAS_DEBUG') && true == EVAS_DEBUG) {
-            echo $methodName . ('cli' == PHP_SAPI ? "\n" : '<br>');
-        }
         if (method_exists($this, $methodName)) {
+            if (defined('EVAS_DEBUG') && true == EVAS_DEBUG) {
+                echo '[hook]: ' . __CLASS__ . '->' . $methodName . ('cli' == PHP_SAPI ? "\n" : '<br>');
+            }
             call_user_func_array([$this, $methodName], $methodArgs);
         }
     }
@@ -30,10 +30,10 @@ trait HooksTrait
      */
     protected static function staticHook(string $methodName, ...$methodArgs)
     {
-        if (defined('EVAS_DEBUG') && true == EVAS_DEBUG) {
-            echo $methodName . ('cli' == PHP_SAPI ? "\n" : '<br>');
-        }
         if (method_exists(static::class, $methodName)) {
+            if (defined('EVAS_DEBUG') && true == EVAS_DEBUG) {
+                echo '[staticHook]: ' . __CLASS__ . '::' . $methodName . ('cli' == PHP_SAPI ? "\n" : '<br>');
+            }
             call_user_func_array([static::class, $methodName], $methodArgs);
         }
     }
