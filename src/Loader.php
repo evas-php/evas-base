@@ -57,6 +57,15 @@ class Loader
     }
 
     /**
+     * Получение директории Evas PHP.
+     * @return string
+     */
+    public static function getEvasDir(): string
+    {
+        return dirname(dirname(__DIR__));
+    }
+
+    /**
      * Конструктор.
      * @param string|null базовая директория автозагрузки
      */
@@ -112,7 +121,7 @@ class Loader
      */
     public function useEvas(): Loader
     {
-        $evasDir = dirname(dirname(__DIR__));
+        $evasDir = static::getEvasDir();
         $dirs = scandir($evasDir);
         foreach ($dirs as &$dir) {
             if (0 === strpos($dir, 'evas-')) {
