@@ -224,7 +224,7 @@ class Env
     {
         static::init();
         $value = getenv($name, static::PHP_GETENV_LOCAL_ONLY);
-        if (null !== $default && $value === static::PHP_GETENV_DEFAULT_RETURN) {
+        if ($value === static::PHP_GETENV_DEFAULT_RETURN) {
             return $default;
         }
         return $value;
