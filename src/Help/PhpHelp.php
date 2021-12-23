@@ -90,7 +90,8 @@ class PhpHelp
      */
     public static function isCli(): bool
     {
-        return substr(PHP_SAPI, 0, 3) == 'cli';
+        return (defined('PHP_SAPI') && substr(PHP_SAPI, 0, 3) == 'cli')
+         || (function_exists('php_sapi_name') && php_sapi_name() == 'cli');
     }
 
     /**
