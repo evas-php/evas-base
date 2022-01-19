@@ -20,9 +20,7 @@ class Env
     /** @static bool значение 2 аргумента вызова функции getenv */
     const PHP_GETENV_LOCAL_ONLY = true;
 
-    /**
-     * @static array маппинг ENV свойств установленных через Evas\Base\Env
-     */
+    /** @static array маппинг ENV свойств установленных через Evas\Base\Env */
     private static $setted = [];
 
     /** @static bool был ли запущен обработчик ENV */
