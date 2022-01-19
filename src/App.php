@@ -10,8 +10,6 @@ use Evas\Base\Traits\AppDiTrait;
 use Evas\Base\Traits\AppDirTrait;
 use Evas\Base\Traits\IncludeTrait;
 
-include_once __DIR__ . '/functions.php';
-
 class App
 {
     use AppDirTrait;
