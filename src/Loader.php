@@ -14,6 +14,8 @@ use Evas\Base\Help\PhpHelp;
 include_once __DIR__ .'/Help/PhpHelp.php';
 // include_once __DIR__ .'/Help/functions.php';
 
+include_once __DIR__ . '/functions.php';
+
 class Loader
 {
     /** @var string базовая директория */
