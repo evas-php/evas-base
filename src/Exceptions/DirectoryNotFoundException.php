@@ -14,7 +14,7 @@ class DirectoryNotFoundException extends BaseException
     /**
      * Выбрасывание исключения с генерацией сообщения по имени директории.
      * @param string имя директории
-     * @param int код|null ошибки
+     * @param int|null код ошибки
      * @return static
      */
     public static function byName(string $name, int $code = 0)
