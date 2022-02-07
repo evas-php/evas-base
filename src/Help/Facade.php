@@ -6,13 +6,8 @@
  */
 namespace Evas\Base\Help;
 
-use Evas\Base\Help\HooksTrait;
-
 class Facade
 {
-    /** Подключаем трейт хуков. */
-    use HooksTrait;
-
     /** @static static объект монтированный в фасад */
     protected static $mountedObject;
 
@@ -32,6 +27,13 @@ class Facade
     {
         static::$mountedObject = &$object;
     }
+
+    /**
+     * Монтирование содержимого фасада по умолчанию.
+     * @throws \InvalidArgumentException
+     */
+    protected static function mountDefault()
+    {}
 
     /**
      * Магический вызов метода объекта в фасаде.
@@ -66,7 +68,7 @@ class Facade
             ));
         }
         if (!static::$mountedObject) {
-            static::staticHook('mountDefault');
+            static::mountDefault();
         }
         if (!static::$mountedObject) {
             throw new \BadMethodCallException(sprintf('Facade %s not has entity', __CLASS__));
