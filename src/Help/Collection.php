@@ -41,7 +41,8 @@ class Collection implements ArrayAccess, JsonSerializable, IteratorAggregate
      */
     public function __construct($items = null)
     {
-        $this->items = $this->getArrayableItems($items);
+        $items = $this->getArrayableItems($items);
+        if ($items) $this->push(...$items);
     }
 
     // Поддержка доступа как к массиву.
@@ -210,7 +211,7 @@ class Collection implements ArrayAccess, JsonSerializable, IteratorAggregate
      * @param mixed ...$items элементы
      * @return self
      */
-    public function push(... $items)
+    public function push(...$items)
     {
         foreach ($items as &$item) {
             $this->add($item);
