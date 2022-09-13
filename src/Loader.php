@@ -9,7 +9,15 @@
  */
 namespace Evas\Base;
 
+use Evas\Base\Exceptions\BaseException;
 use Evas\Base\Help\PhpHelp;
+
+if (class_exists(PhpHelp::class)) {
+    throw new BaseException(
+        'Cannot declare class ' . Loader::class . ', because the name is already in use.'
+        . ' Most likely you are trying to cause the root file index.php to be drawn.'
+    );
+}
 
 include_once __DIR__ .'/Help/PhpHelp.php';
 // include_once __DIR__ .'/Help/functions.php';
