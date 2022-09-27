@@ -51,7 +51,7 @@ class PhpConfigRender
      */
     public function render($data, array $phpDoc = null): string
     {
-        return $this->result = $this->line('<\?php')
+        return $this->result = $this->line('<?php')
         . $this->phpDoc($phpDoc)
         . 'return ' . $this->renderEntity($data);
     }
