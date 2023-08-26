@@ -101,13 +101,20 @@ class Loader
     /**
      * Добавление пути пространства имен.
      * @param string пространство имен
-     * @param string путь
+     * @param string|array путь/пути
      * @return self
      */
-    public function namespace(string $namespace, string $path): Loader
+    public function namespace(string $namespace, string|array $paths): Loader
     {
         $namespace = str_replace('\\', '\\\\', $namespace);
-        $this->namespaces[$namespace] = PhpHelp::path($path);
+        if(is_array($paths)){
+            $this->namespaces[$namespace] = [];
+            foreach ($paths as &$path) {
+                $this->namespaces[$namespace][] = PhpHelp::path($path);
+            }
+        } else {
+            $this->namespaces[$namespace] = PhpHelp::path($paths);
+        }
         return $this;
     }
 
@@ -216,9 +223,15 @@ class Loader
         foreach ($this->files as $name => $path) {
             if ($className === $name && $this->load($path)) return;
         }
-        foreach ($this->namespaces as $name => $path) {
+        foreach ($this->namespaces as $name => $paths) {
             if (preg_match("/^$name(.*)/", $className, $matches)) {
-                if ($this->load($path . $matches[1] . '.php')) return;
+                if(is_array($paths)){
+                    foreach ($paths as &$path) {
+                        if ($this->load($path . $matches[1] . '.php')) return; 
+                    }
+                } else {
+                    if ($this->load($paths . $matches[1] . '.php')) return;
+                }
             }
         }
         foreach ($this->dirs as &$dir) {
