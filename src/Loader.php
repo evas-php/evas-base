@@ -227,7 +227,7 @@ class Loader
             if (preg_match("/^$name(.*)/", $className, $matches)) {
                 if (is_array($paths)) {
                     foreach ($paths as &$path) {
-                        if ($this->load($path . $matches[1] . '.php')) return; 
+                        if ($this->load($path . $matches[1] . '.php')) return;
                     }
                 } else {
                     if ($this->load($paths . $matches[1] . '.php')) return;
