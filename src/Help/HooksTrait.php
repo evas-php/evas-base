@@ -17,8 +17,9 @@ trait HooksTrait
     {
         if (method_exists($this, $methodName)) {
             evasDebug('[hook]: ' . __CLASS__ . '::' . $methodName);
-            call_user_func_array([$this, $methodName], $methodArgs);
+            return call_user_func_array([$this, $methodName], $methodArgs);
         }
+        return null;
     }
 
     /**
@@ -30,7 +31,8 @@ trait HooksTrait
     {
         if (method_exists(static::class, $methodName)) {
             evasDebug('[staticHook]: ' . __CLASS__ . '::' . $methodName);
-            call_user_func_array([static::class, $methodName], $methodArgs);
+            return call_user_func_array([static::class, $methodName], $methodArgs);
         }
+        return null;
     }
 }
