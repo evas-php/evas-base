@@ -107,7 +107,7 @@ class Loader
     public function namespace(string $namespace, string|array $paths): Loader
     {
         $namespace = str_replace('\\', '\\\\', $namespace);
-        if(is_array($paths)){
+        if (is_array($paths)) {
             $this->namespaces[$namespace] = [];
             foreach ($paths as &$path) {
                 $this->namespaces[$namespace][] = PhpHelp::path($path);
@@ -225,7 +225,7 @@ class Loader
         }
         foreach ($this->namespaces as $name => $paths) {
             if (preg_match("/^$name(.*)/", $className, $matches)) {
-                if(is_array($paths)){
+                if (is_array($paths)) {
                     foreach ($paths as &$path) {
                         if ($this->load($path . $matches[1] . '.php')) return; 
                     }
