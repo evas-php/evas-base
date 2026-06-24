@@ -46,18 +46,19 @@ class StringTemplator
 
     /**
      * Сборка сообщения со значениями по шаблону.
-     * @param string шаблон сообщения
+     * @param string|callable шаблон сообщения или колбэк сборки шаблона сообщения
      * @param array|object|null маппинг или объект со значениями
      * @param array|null маппинг псевдонимов
      * @return string сообщение
      * @throws \InvalidArgumentException
      */
-    public function build(string $template, $vars = null, array $keyAliases = null): string
+    public function build(string|callable $template, $vars = null, array $keyAliases = null): string
     {
         if (null !== $vars && !is_array($vars) && !is_object($vars)) {
             throw new \InvalidArgumentException(sprintf('Argument 2 passed to %s() must be an array or an object, %s given', __METHOD__, gettype($vars)));
         }
         if (is_object($vars)) $vars = get_object_vars($vars);
+        if (is_callable($template)) return $template($vars);
         return preg_replace_callback(
             $this->getMask(), 
             function ($matches) use ($vars, $keyAliases) {
