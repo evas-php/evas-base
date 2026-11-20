@@ -83,6 +83,7 @@ class PhpConfigRender
         if (is_array($entity)) return $this->renderArray($entity, $key);
 
         if (is_string($entity)) $entity = $this->quoteString($entity);
+        else if (is_bool($entity)) $entity = $entity ? 'true' : 'false';
         else if (!is_numeric($entity)) $entity = 'null';
         if (is_null($key)) {
             $entity .= ';';
@@ -104,6 +105,8 @@ class PhpConfigRender
         [$start, $end] = is_null($key)
         ? [ '[', '];' ]
         : [ $this->arrayKeyWithAssignment($key).'[', '],' ];
+
+        if (count($entity) < 1) return $this->line($start . $end);
 
         $out = $this->line($start);
         $this->level++;
